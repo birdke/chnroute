@@ -116,6 +116,39 @@ for net in $(cat other.txt) ; do
 done
 } > ../ros-dpbr-CT-CU.rsc
 
+######电信联通移动
+{
+echo "/ip firewall address-list"
+
+for net in $(cat ct.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+
+for net in $(cat cu.txt) ; do
+  echo "add list=dpbr-CU address=$net"
+done
+
+for net in $(cat cm.txt) ; do
+  echo "add list=dpbr-CMCC address=$net"
+done
+
+for net in $(cat crtc.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+
+for net in $(cat cernet.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+
+for net in $(cat gwbn.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+
+for net in $(cat other.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+} > ../ros-dpbr-CT-CU-CMCC.rsc
+
 
 cd ..
 rm -rf ./pbr
